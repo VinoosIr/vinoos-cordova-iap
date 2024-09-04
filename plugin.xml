@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="vinoos-cordova-iap"
-    version="1.1.4">
+    version="1.1.5">
     <name>Vinoos-Cordova-IAP</name>
     <description>Vinoos plugin for In-App Purchases</description>
     <author>Vinoos</author>
@@ -18,7 +18,7 @@
         <clobbers target="window.iap" />
     </js-module>    
 	
-	<preference name="PERMISSION" default="com.farsitel.bazaar.permission.PAY_THROUGH_BAZAAR" />
+	<preference name="MARKET" default="CAFEBAZAAR" />
 	
 	<!-- android -->
 	<platform name="android">
@@ -29,12 +29,11 @@
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/manifest">
 			<uses-permission android:name="android.permission.INTERNET" />
-			<uses-permission android:name="$PERMISSION" />
 		</config-file>
 
 		<hook type="after_plugin_install" src="hooks/after_plugin_install.js" />
 
-		<source-file src="src/IInAppBillingService.aidl" target-dir="src/com/android/vending/billing" />
+        <source-file src="src/IInAppBillingService.java" target-dir="src/com/android/vending/billing" />
         <source-file src="src/IAP.java" target-dir="src/vinoos/cordova/iap" />
         <source-file src="src/util/AbortableCountDownLatch.java" target-dir="src/vinoos/cordova/iap/util" />
         <source-file src="src/util/Base64.java" target-dir="src/vinoos/cordova/iap/util" />
